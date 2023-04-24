@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <script>
+        function bar(e) {
+  e.preventDefault(); // prevent default form submission behavior
+
+  console.log('started');
+
+  const name1 = document.getElementById('name').value;
+  const email1 = document.getElementById('email').value;
+  const phone = document.getElementById('phone_no').value;
+
+  let pp = document.getElementById('email').value;
+
+  myobj = {
+    'name': name1,
+    'email': email1,
+    'phone': phone
+  };
+
+  localStorage.setItem(pp, JSON.stringify(myobj));
+
+  let newdiv = document.createElement('div');
+  let newli = document.createElement('li');
+  newli.textContent = JSON.stringify(myobj);
+  newdiv.appendChild(newli);
+  document.body.appendChild(newdiv);
+  console.log(newdiv);
+}
+
+document.addEventListener('DOMContentLoaded', function() {
+  const form = document.querySelector('form');
+  form.addEventListener('submit', bar);
+});
+
+            
+            
+        
+        
+        
+    </script>
+</head>
+
+<body>
+    <form action="">
+        <label for="name"> name</label>
+        <input type="text" id="name">
+        <label for="email">email</label>
+        <input type="text" id="email">
+        <label for="phone_no">phone number</label>
+        <input type="text" id="phone_no">
+
+        <button type="submit" onclick="bar()">submit</button>
+
+    </form>
+    
+</body>
+</html>
