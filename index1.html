@@ -100,13 +100,20 @@
                 const date=document.getElementById('timeforcall1').value;
                 const time=document.getElementById('timeforcall2').value;
 
+                let person={
+                    'name_of_user':name,
+                    'email_of_user':email,
+                    'phone_of_user':phone,
+                    'date_of_visit':date,
+                    'time_of_visit':time
+                }
+                
+                
+
                 console.log(name);
 
-                 localStorage.setItem('name_of_user',name)
-                 localStorage.setItem('email_of_user',email)
-                 localStorage.setItem('phone_of_user',phone)
-                 localStorage.setItem('date_of_visit',date)
-                 localStorage.setItem('time of visit',time)
+                 localStorage.setItem('person',JSON.stringify(person))
+                 
             }
         
         
