@@ -7,36 +7,57 @@
     <title>Document</title>
 
     <script>
-        function bar(e) {
-  e.preventDefault(); // prevent default form submission behavior
+    function bar(e) {
+        e.preventDefault(); // prevent default form submission behavior
 
-  console.log('started');
+        console.log('started');
 
-  const name1 = document.getElementById('name').value;
-  const email1 = document.getElementById('email').value;
-  const phone = document.getElementById('phone_no').value;
+        const name1 = document.getElementById('name').value;
+        const email1 = document.getElementById('email').value;
+        const phone = document.getElementById('phone_no').value;
 
-  let pp = document.getElementById('email').value;
+        let pp = document.getElementById('email').value;
 
-  myobj = {
-    'name': name1,
-    'email': email1,
-    'phone': phone
-  };
+        myobj = {
+            'name': name1,
+            'email': email1,
+            'phone': phone
+        };
 
-  localStorage.setItem(pp, JSON.stringify(myobj));
+            localStorage.setItem(pp, JSON.stringify(myobj));
 
-  let newdiv = document.createElement('div');
-  let newli = document.createElement('li');
-  newli.textContent = JSON.stringify(myobj);
-  newdiv.appendChild(newli);
-  document.body.appendChild(newdiv);
-  console.log(newdiv);
+            let newdiv = document.createElement('div');
+            let newli = document.createElement('li');
+            let delete_btn=document.createElement('button')
+            delete_btn.onclick=ss;
+            delete_btn.type='submit'
+            delete_btn.textContent='delete';
+            newli.textContent = JSON.stringify(myobj);
+            newli.appendChild(delete_btn)
+            newdiv.appendChild(newli);
+            
+
+            document.body.appendChild(newdiv);
+  
+}
+
+function ss(e)
+{   
+    
+    e.preventDefault()
+    let item=e.target.parentElement
+    let newobj = item.cloneNode(true); // clone the li element to remove the delete button
+    newobj.removeChild(newobj.lastChild)
+    let dl=JSON.parse(newobj.textContent)
+    console.log(dl);
+    item.remove()
+    localStorage.removeItem(dl.email)
 }
 
 document.addEventListener('DOMContentLoaded', function() {
   const form = document.querySelector('form');
   form.addEventListener('submit', bar);
+  const deleteli=document.querySelector()
 });
 
             
